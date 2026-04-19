@@ -7,7 +7,6 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Landing from './pages/Landing';
 import Auth from './pages/Auth';
 import DashboardFeed from './pages/DashboardFeed';
-import AICenter from './pages/AICenter';
 import RequestDetail from './pages/RequestDetail';
 import CreateRequest from './pages/CreateRequest';
 import Leaderboard from './pages/Leaderboard';
@@ -30,7 +29,6 @@ function AppLayout() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Auth />} />
         <Route path="/feed" element={user ? <DashboardFeed /> : <Auth />} />
-        <Route path="/ai-center" element={user ? <AICenter /> : <Auth />} />
         <Route path="/request/:id" element={user ? <RequestDetail /> : <Auth />} />
         <Route path="/create-request" element={user ? <CreateRequest /> : <Auth />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
