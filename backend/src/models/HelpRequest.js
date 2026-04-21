@@ -1,22 +1,52 @@
 import mongoose from 'mongoose';
 
 const helpRequestSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    category: { type: String, required: true }, // e.g., Web Dev, UI/UX, Mobile [cite: 61]
-    tags: [String], // AI Suggested tags yahan store honge [cite: 65]
-    urgency: { 
-        type: String, 
-        enum: ['Low', 'Medium', 'High'], 
-        default: 'Medium' 
-    }, // AI detected urgency [cite: 110]
-    status: { 
-        type: String, 
-        enum: ['Open', 'In-Progress', 'Solved'], 
-        default: 'Open' 
-    },
-    helpers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // List of people who clicked "I can help" [cite: 70]
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+    enum: ['Web Development', 'Design', 'Data Science', 'Marketing', 'Career', 'Community', 'Other'],
+    default: 'Other',
+  },
+  urgency: {
+    type: String,
+    enum: ['Low', 'Medium', 'High'],
+    default: 'Low',
+  },
+  tags: {
+    type: [String],
+    default: [],
+  },
+  status: {
+    type: String,
+    enum: ['Open', 'In Progress', 'Solved'],
+    default: 'Open',
+  },
+  requester: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  helpers: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  }],
+  aiSummary: {
+    type: String,
+    default: '',
+  },
+  rewardedHelper: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
 }, { timestamps: true });
 
 export default mongoose.model('HelpRequest', helpRequestSchema);
