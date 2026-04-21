@@ -2,15 +2,15 @@ import 'dotenv/config'; // Must be first import so env vars load before other im
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import connectDB from './config/db.js';
+import connectDB from '../src/config/db.js'
 import cookieParser from 'cookie-parser';
-import authRouter from './routes/authRoutes.js';
-import helpRouter from './routes/helpRoutes.js';
-import userRouter from './routes/userRoutes.js';
-import chatRouter from './routes/chatRoutes.js';
-import notificationRouter from './routes/notificationRoutes.js';
-import analyticsRouter from './routes/analyticsRoutes.js';
-import adminRouter from './routes/adminRoutes.js';
+import authRouter from '../src/routes/authRoutes.js';
+import helpRouter from '../src/routes/helpRoutes.js';
+import userRouter from '../src/routes/userRoutes.js';
+import chatRouter from '../src/routes/chatRoutes.js';
+import notificationRouter from '../src/routes/notificationRoutes.js';
+import analyticsRouter from '../src/routes/analyticsRoutes.js';
+import adminRouter from '../src/routes/adminRoutes.js';
 
 // MongoDB Connection
 connectDB();
@@ -54,5 +54,5 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-
+    
 export default app;
